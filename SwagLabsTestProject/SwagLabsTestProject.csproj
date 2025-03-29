@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RunSettingsFilePath>C:\Users\weron\source\repos\SwagLabsTestProject\SwagLabsTestProject\bin\Debug\net6.0\fine-code-coverage\coverage-tool-output\SwagLabsTestProject-fcc-mscodecoverage-generated.runsettings</RunSettingsFilePath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Drivers\" />
-    <Folder Include="Support\" />
   </ItemGroup>
 
 </Project>
