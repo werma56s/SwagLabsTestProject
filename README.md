@@ -7,6 +7,7 @@ SwagLabsTestProject is an automated testing project for the Swag Labs website. T
 •	Cross-browser testing support for Chrome, Firefox, and Edge.  
 •	Use of Page Object Model (POM) for better test maintenance and readability.  
 •	Integration with NUnit for test execution and reporting. 
+•	Integration with Faker.Data for generating dynamic fake data, useful for randomizing user credentials, names, and other data for login tests.  
 # Technologies Used
 •	.NET: 6.0  
 •	Selenium WebDriver: 4.30.0  
@@ -15,6 +16,7 @@ SwagLabsTestProject is an automated testing project for the Swag Labs website. T
 •	NUnit: 4.3.2  
 •	NUnit3TestAdapter: 5.0.0  
 •	FluentAssertions: 8.2.0   
+•	Faker.Data: 2.0.1 For generating fake data such as random user credentials, email addresses, and more to support the login functionality tests.  
 # Project Structure  
 •	Features: Contains the feature files written in Gherkin syntax.  
 •	StepDefinitions: Contains the step definition classes that map Gherkin steps to C# methods.  
@@ -26,4 +28,4 @@ SwagLabsTestProject is an automated testing project for the Swag Labs website. T
 2.	Open the solution in Visual Studio 2022.
 3.	Restore the NuGet packages.
 4.	Build the solution.
-5.	To run the tests, use the Test Explorer in Visual Studio or run the tests from the command line using the dotnet test command.
+5.	To run the tests, use the Test Explorer in Visual Studio or run the tests from the command line using the "dotnet test" command.
