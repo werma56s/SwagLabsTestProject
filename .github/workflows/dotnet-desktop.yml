@@ -16,38 +16,36 @@ jobs:
     runs-on: ubuntu-latest  # Możesz wybrać inną wersję systemu, np. windows-latest
     
     steps:
-      # Krok 1: Sprawdzenie repozytorium
+      # Krok 1: Checkout kodu
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Krok 2: Instalacja .NET 6.0
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v2
+      # Krok 2: Zainstaluj .NET SDK
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0'
+          dotnet-version: '6.0'  # Użyj odpowiedniej wersji .NET
 
-      # Krok 3: Przywrócenie zależności
-      - name: Restore dependencies
-        run: dotnet restore
+      # Krok 3: Build aplikacji .NET
+      - name: Build .NET application
+        run: |
+          dotnet restore
+          dotnet build --configuration Release
 
-      # Krok 4: Zbudowanie projektu
-      - name: Build the project
-        run: dotnet build --configuration Release
+      # Krok 4: Uruchom Docker Compose
+      - name: Set up Docker Compose
+        run: |
+          docker-compose -f docker-compose.yml up -d  # Załóżmy, że masz docker-compose.yml w repozytorium
 
-      # Krok 5: Uruchomienie Dockera z Selenium Grid i Nodes
-      - name: Start Docker and Selenium Grid
-        run: docker-compose up -d
-        working-directory: SwagLabsTestProject/docker-compose.yml # Upewnij się, że wskazujesz poprawną lokalizację
+      # Krok 5: Uruchom testy
+      - name: Run .NET tests
+        run: |
+          dotnet test
 
-      # Krok 6: Poczekaj na uruchomienie Selenium Grid
-      - name: Wait for Selenium Hub to be ready
-        run: sleep 10 # Czekaj, aż Selenium Grid będzie gotowe (możesz zwiększyć czas oczekiwania, jeśli potrzeba)
+      # Krok 6: Zatrzymaj kontener Docker po testach
+      - name: Tear down Docker Compose
+        run: |
+          docker-compose down
 
-      # Krok 7: Uruchomienie testów
-      - name: Run tests
-        run: dotnet test --configuration Release --no-build --verbosity normal
-
-      # Krok 8: Zatrzymanie kontenerów Dockera po zakończeniu testów
-      - name: Stop Docker containers
-        run: docker-compose down
-        working-directory: ./path/to/your/docker/setup
+      # Krok 7: Przeprowadź działania na Dockerze lub wydanie, jeśli testy się powiodą
+      # Możesz dodać tutaj kolejne kroki w zależności od potrzeby (np. wdrożenie)
