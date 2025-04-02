@@ -52,7 +52,7 @@ jobs:
       # Krok 6: Uruchom Docker Compose w odpowiedniej ścieżce
       - name: Start Docker Compose
         run: |
-          docker compose -f SwagLabsTestProject/docker-compose.yml up -d
+          docker compose -f SwagLabsTestProject/docker-compose.yml up
 
       # Krok 7: Uruchom testy
       - name: Run .NET tests
