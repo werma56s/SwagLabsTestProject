@@ -26,17 +26,18 @@ jobs:
         with:
           dotnet-version: '6.0'  # Użyj odpowiedniej wersji .NET
 
-      - name: Check Docker version
-        run: |
-          docker --version
-          docker-compose --version
-      
+
       # Krok 3: Instalacja Docker i Docker Compose (przy użyciu Chocolatey)
       - name: Install Docker and Docker Compose
         run: |
           choco install docker-desktop
           choco install docker-compose
-
+      
+      - name: Check Docker version
+        run: |
+          docker --version
+          docker-compose --version
+      
       # Krok 4: Upewnij się, że Docker jest uruchomiony
       - name: Start Docker
         run: |
