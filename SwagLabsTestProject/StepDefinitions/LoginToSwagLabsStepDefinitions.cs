@@ -2,21 +2,25 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using SwagLabsTestProject.Pom;
 using SwagLabsTestProject.Support;
+using TechTalk.SpecFlow;
 
 namespace SwagLabsTestProject.StepDefinitions
 {
     [Binding]
     public class LoginToSwagLabsStepDefinitions
     {
+        private readonly ScenarioContext _scenarioContext;
         private readonly IWebDriver _driver;
         private readonly Login _loginPage;
         private readonly Navigation _navigation;
         private readonly LoginDataProvider _loginDataProvider;
         private readonly ProductsPage _productsPage;
 
-        public LoginToSwagLabsStepDefinitions(IWebDriver driver)
+        public LoginToSwagLabsStepDefinitions(ScenarioContext scenarioContext)
         {
-            _driver = driver;
+
+            _scenarioContext = scenarioContext;
+            _driver = _scenarioContext.Get<IWebDriver>("WebDriver");
             _loginPage = new Login(_driver);
             _navigation = new Navigation(_driver);
             _loginDataProvider = new LoginDataProvider();
