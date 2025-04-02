@@ -13,8 +13,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Możesz wybrać inną wersję systemu, np. windows-latest
-    
+    runs-on: ubuntu-latest
+
     steps:
       # Krok 1: Checkout kodu
       - name: Checkout code
@@ -24,28 +24,35 @@ jobs:
       - name: Set up .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0'  # Użyj odpowiedniej wersji .NET
+          dotnet-version: '6.x'  # Użyj odpowiedniej wersji .NET
 
-      # Krok 3: Build aplikacji .NET
+      # Krok 3: Instalacja Docker i Docker Compose
+      - name: Set up Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+          sudo apt-get install -y docker-compose
+
+      # Krok 4: Build aplikacji .NET
       - name: Build .NET application
         run: |
           dotnet restore
           dotnet build --configuration Release
 
-      # Krok 4: Uruchom Docker Compose
-      - name: Set up Docker Compose # Załóżmy, że masz docker-compose.yml w repozytoriu
+      # Krok 5: Uruchom Docker Compose w odpowiedniej ścieżce
+      - name: Start Docker Compose
         run: |
-          docker-compose -f docker-compose.yml up -d 
+          docker-compose -f SwagLabsTestProject/docker-compose.yml up -d
 
-      # Krok 5: Uruchom testy
+      # Krok 6: Uruchom testy
       - name: Run .NET tests
         run: |
           dotnet test
 
-      # Krok 6: Zatrzymaj kontener Docker po testach
+      # Krok 7: Zatrzymaj Docker Compose
       - name: Tear down Docker Compose
         run: |
-          docker-compose down
+          docker-compose -f SwagLabsTestProject/docker-compose.yml down
 
       # Krok 7: Przeprowadź działania na Dockerze lub wydanie, jeśli testy się powiodą
       # Możesz dodać tutaj kolejne kroki w zależności od potrzeby (np. wdrożenie)
