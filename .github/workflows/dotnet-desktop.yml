@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest # or ubuntu-latest
 
     steps:
       # Krok 1: Checkout kodu
@@ -24,35 +24,50 @@ jobs:
       - name: Set up .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.x'  # Użyj odpowiedniej wersji .NET
+          dotnet-version: '6.0'  # Użyj odpowiedniej wersji .NET
 
-      # Krok 3: Instalacja Docker i Docker Compose
-      - name: Set up Docker
+      - name: Check Docker version
         run: |
-          sudo apt-get update
-          sudo apt-get install -y docker.io
-          sudo apt-get install -y docker-compose
+          docker --version
+          docker-compose --version
+      
+      # Krok 3: Instalacja Docker i Docker Compose (przy użyciu Chocolatey)
+      - name: Install Docker and Docker Compose
+        run: |
+          choco install docker-desktop
+          choco install docker-compose
 
-      # Krok 4: Build aplikacji .NET
+      # Krok 4: Upewnij się, że Docker jest uruchomiony
+      - name: Start Docker
+        run: |
+          & "C:\Program Files\Docker\Docker\Docker Desktop.exe" &
+
+       # Krok 5: Build aplikacji .NET
       - name: Build .NET application
         run: |
           dotnet restore
           dotnet build --configuration Release
 
-      # Krok 5: Uruchom Docker Compose w odpowiedniej ścieżce
+      # Krok 6: Uruchom Docker Compose w odpowiedniej ścieżce
       - name: Start Docker Compose
         run: |
           docker-compose -f SwagLabsTestProject/docker-compose.yml up -d
 
-      # Krok 6: Uruchom testy
+      # Krok 7: Uruchom testy
       - name: Run .NET tests
         run: |
           dotnet test
 
-      # Krok 7: Zatrzymaj Docker Compose
+      # Krok 8: Zatrzymaj Docker Compose
       - name: Tear down Docker Compose
         run: |
           docker-compose -f SwagLabsTestProject/docker-compose.yml down
+
+      # Krok 9: Sprawdź wersję Dockera i Docker Compose
+      - name: Check Docker version
+        run: |
+          docker --version
+          docker-compose --version
 
       # Krok 7: Przeprowadź działania na Dockerze lub wydanie, jeśli testy się powiodą
       # Możesz dodać tutaj kolejne kroki w zależności od potrzeby (np. wdrożenie)
