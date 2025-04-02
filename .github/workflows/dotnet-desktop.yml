@@ -33,10 +33,10 @@ jobs:
           choco install docker-desktop
           choco install docker-compose
       
-      - name: Check Docker version
-        run: |
-          docker --version
-          docker-compose --version
+      #- name: Check Docker version
+      #  run: |
+      #    docker --version
+      #    docker-compose --version
       
       # Krok 4: Upewnij się, że Docker jest uruchomiony
       - name: Start Docker
