@@ -9,15 +9,17 @@ namespace SwagLabsTestProject.StepDefinitions
     [Binding]
     public class InventoryPageFunctionalityStepDefinitions
     {
+        private readonly ScenarioContext _scenarioContext;
         private readonly IWebDriver _driver;
         private readonly InventoryPage _inventoryPage;
         private readonly CartPage _cartPage;
 
-        public InventoryPageFunctionalityStepDefinitions(IWebDriver driver)
+        public InventoryPageFunctionalityStepDefinitions(ScenarioContext scenarioContext)
         {
-            _driver = driver;
-            _inventoryPage = new InventoryPage(driver);
-            _cartPage = new CartPage(driver);
+            _scenarioContext = scenarioContext;
+            _driver = _scenarioContext.Get<IWebDriver>("WebDriver");
+            _inventoryPage = new InventoryPage(_driver);
+            _cartPage = new CartPage(_driver);
         }
 
         [When(@"User clicks on the ""([^""]*)"" button of a product ""([^""]*)""")]

@@ -9,13 +9,15 @@ namespace SwagLabsTestProject.StepDefinitions
     [Binding]
     public class CheckoutProcessValidationStepDefinitions
     {
+        private readonly ScenarioContext _scenarioContext;
         private readonly IWebDriver _driver;
         private readonly CheckoutPage _checkoutPage;
 
-        public CheckoutProcessValidationStepDefinitions(IWebDriver driver)
+        public CheckoutProcessValidationStepDefinitions(ScenarioContext scenarioContext)
         {
-            _driver = driver;
-            _checkoutPage = new CheckoutPage(driver);
+            _scenarioContext = scenarioContext;
+            _driver = _scenarioContext.Get<IWebDriver>("WebDriver");
+            _checkoutPage = new CheckoutPage(_driver);
         }
 
         [Given(@"the user click the checkout button")]
