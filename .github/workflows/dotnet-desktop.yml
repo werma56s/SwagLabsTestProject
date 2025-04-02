@@ -33,9 +33,9 @@ jobs:
           dotnet build --configuration Release
 
       # Krok 4: Uruchom Docker Compose
-      - name: Set up Docker Compose
+      - name: Set up Docker Compose # Załóżmy, że masz docker-compose.yml w repozytoriu
         run: |
-          docker-compose -f docker-compose.yml up -d  # Załóżmy, że masz docker-compose.yml w repozytorium
+          docker-compose -f docker-compose.yml up -d 
 
       # Krok 5: Uruchom testy
       - name: Run .NET tests
