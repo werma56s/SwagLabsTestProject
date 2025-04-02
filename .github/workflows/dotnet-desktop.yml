@@ -1,0 +1,53 @@
+
+# For more information on GitHub Actions, refer to https://github.com/features/actions
+# For a complete CI/CD sample to get started with GitHub Action workflows for Desktop Applications,
+# refer to https://github.com/microsoft/github-actions-for-desktop-apps
+
+name: CI Pipeline for SwagLabsTestProject
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Możesz wybrać inną wersję systemu, np. windows-latest
+    
+    steps:
+      # Krok 1: Sprawdzenie repozytorium
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Krok 2: Instalacja .NET 6.0
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '6.0'
+
+      # Krok 3: Przywrócenie zależności
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # Krok 4: Zbudowanie projektu
+      - name: Build the project
+        run: dotnet build --configuration Release
+
+      # Krok 5: Uruchomienie Dockera z Selenium Grid i Nodes
+      - name: Start Docker and Selenium Grid
+        run: docker-compose up -d
+        working-directory: SwagLabsTestProject/docker-compose.yml # Upewnij się, że wskazujesz poprawną lokalizację
+
+      # Krok 6: Poczekaj na uruchomienie Selenium Grid
+      - name: Wait for Selenium Hub to be ready
+        run: sleep 10 # Czekaj, aż Selenium Grid będzie gotowe (możesz zwiększyć czas oczekiwania, jeśli potrzeba)
+
+      # Krok 7: Uruchomienie testów
+      - name: Run tests
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+      # Krok 8: Zatrzymanie kontenerów Dockera po zakończeniu testów
+      - name: Stop Docker containers
+        run: docker-compose down
+        working-directory: ./path/to/your/docker/setup
