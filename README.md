@@ -18,13 +18,13 @@ The SwagLabsTestProject is an automated testing framework for the Swag Labs webs
 •	NUnit3TestAdapter: 5.0.0  
 •	FluentAssertions: 8.2.0   
 •	Faker.Data: 2.0.1 For generating fake data such as random user credentials, email addresses, and more to support the login functionality tests.  
-• Docker: For running Selenium Grid with multiple browser nodes.  
+•   Docker: For running Selenium Grid with multiple browser nodes.  
 # Project Structure  
 •	Features: Contains the feature files written in Gherkin syntax.  
 •	StepDefinitions: Contains the step definition classes that map Gherkin steps to C# methods.  
 •	Pom: Contains the Page Object Model classes representing different pages of the Swag Labs application.  
 •	Support: Contains support classes such as data providers and utility methods.  
-•	Hook: Contains hooks for setting up and tearing down the WebDriver before and after each scenario.  
+•	Hook: Contains hooks for setting up and tearing down the WebDriver before and after each scenario.    
 •	Drivers: Contains the WebDriverLibrary class responsible for setting up and managing the browser WebDriver instances. It supports cross-browser testing using Selenium Grid for parallel execution across browsers like Chrome, Firefox and Edge.
 # Setup and Usage
 1.	Clone the repository.
