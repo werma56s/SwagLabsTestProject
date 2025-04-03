@@ -52,6 +52,7 @@ jobs:
       - name: Enable WSL 2
         run: |
           wsl --install -d Ubuntu
+          wsl -v
         shell: powershell
 
       - name: Restart Docker to Use WSL 2
