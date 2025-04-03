@@ -51,9 +51,7 @@ jobs:
 
       - name: Enable WSL 2
         run: |
-          wsl --install -d Ubuntu
-          wsl --set-version Ubuntu 2
-          wsl --set-default-version 2
+          wsl --install
         shell: powershell
 
       - name: Restart Docker to Use WSL 2
@@ -63,7 +61,8 @@ jobs:
         shell: powershell
 
       - name: Verify WSL Installation
-        run: wsl --list --verbose
+        run: |
+          wsl --list --verbose
         shell: powershell
 
       # Krok 6: Uruchom Docker Compose w odpowiedniej ścieżce
