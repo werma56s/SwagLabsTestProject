@@ -1,6 +1,5 @@
 # SwagLabsTestProject
-Description
-The SwagLabsTestProject is an automated testing framework for the Swag Labs website, built using Selenium WebDriver for browser automation and SpecFlow for BDD testing in C# and .NET 6. It supports cross-browser testing (Chrome, Firefox, Edge), employs the Page Object Model (POM) for maintainable tests, and integrates Faker.Data for dynamic test data. The project also utilizes Docker and Selenium Grid to run tests in isolated containers across multiple browsers, enabling efficient parallel execution and scalable test environments.
+The SwagLabsTestProject is an automated testing project for the Swag Labs website, built using Selenium WebDriver for browser automation and SpecFlow for BDD testing in C# and .NET 6. It supports cross-browser testing (Chrome, Firefox, Edge), employs the Page Object Model (POM) for maintainable tests, and integrates Faker.Data for dynamic test data. The project also utilizes Docker and Selenium Grid to run tests in isolated containers across multiple browsers, enabling efficient parallel execution and scalable test environments. Additionally, the project integrates GitHub Actions for Continuous Integration (CI), automating the process of building, testing, and deploying the application. GitHub Actions workflows are configured to run tests on every push or pull request to the main branch, ensuring that code changes are thoroughly tested in a consistent environment.
 # Features
 •	Automated tests for login functionality with various user types and credentials.  
 •	Verification of UI elements and their properties.  
@@ -18,8 +17,11 @@ The SwagLabsTestProject is an automated testing framework for the Swag Labs webs
 •	NUnit3TestAdapter: 5.0.0  
 •	FluentAssertions: 8.2.0   
 •	Faker.Data: 2.0.1 For generating fake data such as random user credentials, email addresses, and more to support the login functionality tests.  
+•	Selenium Grid: For cross-browser testing, often managed in Docker or via services in the CI pipeline.
 •   Docker: For running Selenium Grid with multiple browser nodes.  
+•   GitHub Actions: The core technology for automating workflows, enabling CI/CD processes directly within GitHub repositories.  
 # Project Structure  
+•	The .github/workflows/dotnet-desktop.yml file defines a CI workflow for a .NET application, including steps such as checking out code, starting Docker containers, setting up .NET SDK, building the application, running tests, and tearing down Docker containers.
 •	Features: Contains the feature files written in Gherkin syntax.  
 •	StepDefinitions: Contains the step definition classes that map Gherkin steps to C# methods.  
 •	Pom: Contains the Page Object Model classes representing different pages of the Swag Labs application.  
