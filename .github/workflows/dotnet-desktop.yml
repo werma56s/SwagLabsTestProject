@@ -24,7 +24,7 @@ jobs:
       - name: Start containers
         run: |
           cd SwagLabsTestProject
-          docker compose up --build
+          docker compose up
       
       # Krok 2: Zainstaluj .NET SDK
       - name: Set up .NET SDK
