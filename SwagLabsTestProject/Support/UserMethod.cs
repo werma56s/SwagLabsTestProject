@@ -21,7 +21,7 @@ namespace SwagLabsTestProject.Support
     {
         private readonly LoginData _loginData;
 
-        public LoginDataProvider(string jsonFilePath = @"Support\LoginData.json")
+        public LoginDataProvider(string jsonFilePath = @"Support/LoginData.json")
         {
             var projectPath = Directory.GetParent(Directory.GetCurrentDirectory())?.Parent?.Parent?.FullName;
             var fullPath = Path.Combine(projectPath, jsonFilePath);
