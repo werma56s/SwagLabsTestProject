@@ -61,6 +61,7 @@ jobs:
         run: |
           Stop-Service docker
           Start-Service docker
+          & "C:\Program Files\Docker\Docker\Docker Desktop.exe" &
         shell: powershell
 
       - name: Verify WSL Installation
