@@ -32,61 +32,23 @@ jobs:
         with:
           dotnet-version: '6.0'  # Użyj odpowiedniej wersji .NET
 
-
-      # # Krok 3: Instalacja Docker i Docker Compose (przy użyciu Chocolatey)
-      # - name: Install Docker and Docker Compose
-      #   run: |
-      #     choco install docker-desktop
-      #     choco install docker-compose
-      
-      # #- name: Check Docker version
-      # #  run: |
-      # #    docker --version
-      # #    docker-compose --version
-      
-      # - name: Enable WSL 2
-      #   run: |
-      #     wsl --install -d Ubuntu
-      #     wsl --set-version Ubuntu 2
-      #     wsl --set-default-version 2
-      #   shell: powershell
-
-      # # Krok 4: Upewnij się, że Docker jest uruchomiony
-      # - name: Start Docker
-      #   run: |
-      #     & "C:\Program Files\Docker\Docker\Docker Desktop.exe" &
-          
-      # #- name: Verify WSL Installation
-      # #  run: |
-      # #    wsl --list --verbose
-      # #  shell: powershell
-
-       # Krok 5: Build aplikacji .NET
+       # Krok 3: Build aplikacji .NET
       - name: Build .NET application
         run: |
           dotnet restore
           dotnet build --configuration Release
 
-      # # Krok 6: Uruchom Docker Compose w odpowiedniej ścieżce
-      # - name: Start Docker Compose
-      #   run: |
-      #     docker compose -f SwagLabsTestProject/docker-compose.yml up
-
-      # Krok 7: Uruchom testy
+      # Krok 4: Uruchom testy
       - name: Run .NET tests
         run: |
           dotnet test
 
-      # Krok 8: Zatrzymaj Docker Compose
+      # Krok 5: Zatrzymaj Docker Compose
       - name: Tear down Docker Compose
         run: |
-          docker compose -f "docker-compose.yml" down
+          cd SwagLabsTestProject
+          docker compose down
 
-      # Krok 9: Sprawdź wersję Dockera i Docker Compose
-      - name: Check Docker version
-        run: |
-          docker --version
-          docker-compose --version
 
       # Krok 7: Przeprowadź działania na Dockerze lub wydanie, jeśli testy się powiodą
       # Możesz dodać tutaj kolejne kroki w zależności od potrzeby (np. wdrożenie)
