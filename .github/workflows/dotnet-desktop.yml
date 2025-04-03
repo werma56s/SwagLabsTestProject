@@ -52,6 +52,8 @@ jobs:
       - name: Enable WSL 2
         run: |
           wsl --install -d Ubuntu
+          wsl --set-version Ubuntu 2
+          wsl --set-default-version 2
           wsl -v
         shell: powershell
 
