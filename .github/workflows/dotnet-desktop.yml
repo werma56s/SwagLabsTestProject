@@ -26,7 +26,7 @@ jobs:
           ls
           cd SwagLabsTestProject
           ls
-          docker-compose -f "${{ github.workplace }}/docker-compose.yml" up -d --build
+          docker-compose -f "SwagLabsTestProject/docker-compose.yml" up -d --build
       
       # Krok 2: Zainstaluj .NET SDK
       - name: Set up .NET SDK
