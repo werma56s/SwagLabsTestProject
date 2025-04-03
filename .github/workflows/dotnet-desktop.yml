@@ -50,10 +50,10 @@ jobs:
         run: |
           & "C:\Program Files\Docker\Docker\Docker Desktop.exe" &
           
-      - name: Verify WSL Installation
-        run: |
-          wsl --list --verbose
-        shell: powershell
+      #- name: Verify WSL Installation
+      #  run: |
+      #    wsl --list --verbose
+      #  shell: powershell
 
        # Krok 5: Build aplikacji .NET
       - name: Build .NET application
