@@ -319,8 +319,8 @@ namespace SwagLabsTestProject.Features
             testRunner.Given("I am on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
             testRunner.When("I enter credentials \"problem_user\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
             testRunner.And("I click the login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-            testRunner.Then("All product should have an incorrect image path \"/static/media/sl-404.168b1cce.jp" +
-                    "g\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            testRunner.Then("All product should have an incorrect image path \"/static/media/sl-404.168b1cce103" +
+                    "84b857a6f.jpg\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
             this.ScenarioCleanup();
         }
         
@@ -338,8 +338,8 @@ namespace SwagLabsTestProject.Features
             testRunner.Given("I am on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
             testRunner.When("I enter credentials \"problem_user\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
             testRunner.And("I click the login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-            testRunner.Then("All product should have an incorrect image path \"/static/media/sl-404.168b1cce.jp" +
-                    "g\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            testRunner.Then("All product should have an incorrect image path \"/static/media/sl-404.168b1cce103" +
+                    "84b857a6f.jpg\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
             this.ScenarioCleanup();
         }
         
@@ -431,8 +431,8 @@ namespace SwagLabsTestProject.Features
             testRunner.And("I click the login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
             testRunner.Then("I should be taken to the products page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
             testRunner.And("The cart icon should be in the wrong place", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-            testRunner.And("One product should have an incorrect image path \"/static/media/sl-404.168b1cce.jp" +
-                    "g\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            testRunner.And("One product should have an incorrect image path \"/static/media/sl-404.168b1cce103" +
+                    "84b857a6f.jpg\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
             this.ScenarioCleanup();
         }
         
@@ -452,8 +452,8 @@ namespace SwagLabsTestProject.Features
             testRunner.And("I click the login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
             testRunner.Then("I should be taken to the products page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
             testRunner.And("The cart icon should be in the wrong place", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-            testRunner.And("One product should have an incorrect image path \"/static/media/sl-404.168b1cce.jp" +
-                    "g\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            testRunner.And("One product should have an incorrect image path \"/static/media/sl-404.168b1cce103" +
+                    "84b857a6f.jpg\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
             this.ScenarioCleanup();
         }
     }

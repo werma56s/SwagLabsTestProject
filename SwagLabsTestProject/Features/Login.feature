@@ -60,7 +60,7 @@ Scenario: Login with problem user
   Given I am on the login page
   When I enter credentials "problem_user"
   And I click the login button
-  Then All product should have an incorrect image path "/static/media/sl-404.168b1cce.jpg"
+  Then All product should have an incorrect image path "/static/media/sl-404.168b1cce10384b857a6f.jpg"
 
 Scenario: Login with performance glitch user
   Given I am on the login page
@@ -80,4 +80,4 @@ Scenario: Login with visual user
   And I click the login button
   Then I should be taken to the products page
   And The cart icon should be in the wrong place
-  And One product should have an incorrect image path "/static/media/sl-404.168b1cce.jpg"
+  And One product should have an incorrect image path "/static/media/sl-404.168b1cce10384b857a6f.jpg"
